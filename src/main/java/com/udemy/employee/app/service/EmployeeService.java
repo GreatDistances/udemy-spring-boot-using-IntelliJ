@@ -29,14 +29,15 @@ public class EmployeeService {
     }
 
     public void updateEmployee(Employee employee) {
-        List<Employee> tempEmployee = new ArrayList<>();
-
         for (Employee e : employeeList) {
             if (e.getId() == employee.getId()) {
-                employee.setName(e.getName());
-                employee.setLocation(e.getLocation());
+                e.setName(employee.getName());
+                e.setLocation(employee.getLocation());
             }
         }
-        this.employeeList = tempEmployee;
+    }
+
+    public void deleteEmployee(int id) {
+        employeeList.remove(getEmployeeById(id));
     }
 }
