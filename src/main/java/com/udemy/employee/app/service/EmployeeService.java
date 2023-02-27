@@ -1,6 +1,8 @@
 package com.udemy.employee.app.service;
 
 import com.udemy.employee.app.entities.Employee;
+import com.udemy.employee.app.repository.EmployeeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -9,6 +11,9 @@ import java.util.List;
 
 @Service
 public class EmployeeService {
+
+    @Autowired
+    EmployeeRepository employeeRepository;
 
     List<Employee> employeeList = new ArrayList<>(Arrays.asList(
         new Employee(1, "Matt", "St Louis"),
@@ -25,7 +30,8 @@ public class EmployeeService {
     }
 
     public void addEmployee(Employee employee) {
-        employeeList.add(employee);
+        employeeRepository.save(employee);
+        //employeeList.add(employee);
     }
 
     public void updateEmployee(Employee employee) {
